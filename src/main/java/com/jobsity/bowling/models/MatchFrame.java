@@ -27,6 +27,7 @@ public abstract class MatchFrame {
         return this;
     }
 
+    //TODO Maybe remove this from here
     public int getScore() {
         return firstShot.toInt() + secondShot.toInt();
     }

@@ -2,8 +2,14 @@ package com.jobsity.bowling.encoders;
 
 import com.jobsity.bowling.models.FinalMatchFrame;
 import com.jobsity.bowling.models.MatchFrame;
+import com.jobsity.bowling.validators.IFrameValidator;
 
 public class TenPinConsoleEncoder implements IFrameEncoder {
+    private IFrameValidator validator;
+
+    public TenPinConsoleEncoder(IFrameValidator validator) {
+        this.validator = validator;
+    }
 
     @Override
     public<T extends MatchFrame> String encode(T frame) {
@@ -14,9 +20,9 @@ public class TenPinConsoleEncoder implements IFrameEncoder {
     }
 
     public String encodeFrame(MatchFrame frame) {
-        if (frame.getFirstShot().toInt() == 10)
+        if (validator.isStrike(frame))
             return "\tX\t";
-        else if (frame.getFirstShot().toInt() + frame.getSecondShot().toInt() == 10)
+        else if (validator.isSplit(frame))
             return String.format("%s\t/\t", frame.getFirstShot());
         else
             return String.format("%s\t%s\t", frame.getFirstShot(), frame.getSecondShot());
@@ -24,24 +30,24 @@ public class TenPinConsoleEncoder implements IFrameEncoder {
 
     public String encodeFinal(FinalMatchFrame frame) {
         StringBuilder builder = new StringBuilder();
-        if (frame.getFirstShot().toInt() == 10) {
+        if (validator.isStrike(frame.getFirstShot())) {
             builder.append("X\t");
 
-            if (frame.getSecondShot().toInt() == 10)
+            if (validator.isStrike(frame.getSecondShot()))
                 builder.append("X\t");
             else
                 builder.append(String.format("%s\t", frame.getSecondShot()));
 
-            if (frame.getThirdShot().toInt() == 10)
+            if (validator.isStrike(frame.getThirdShot()))
                 builder.append("X");
-            else if (frame.getSecondShot().toInt() + frame.getThirdShot().toInt() == 10)
+            else if (validator.areSplit(frame.getSecondShot(), frame.getThirdShot()))
                 builder.append("/");
             else
                 builder.append(frame.getThirdShot());
         } else {
             builder.append(String.format("%s\t", frame.getFirstShot()));
 
-            if (frame.getFirstShot().toInt() + frame.getSecondShot().toInt() == 10)
+            if (validator.isSplit(frame))
                 builder.append("/");
             else
                 builder.append(frame.getSecondShot());

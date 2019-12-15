@@ -8,13 +8,14 @@ import com.jobsity.bowling.models.PlayerScore;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GamePrinter {
+public class GameConsolePrinter implements IGamePrinter {
     private IFrameEncoder frameEncoder;
 
-    public GamePrinter(IFrameEncoder frameEncoder) {
+    public GameConsolePrinter(IFrameEncoder frameEncoder) {
         this.frameEncoder = frameEncoder;
     }
 
+    @Override
     public void printGame(BowlingGame game) {
         printHeader();
         game.getPlayerScores()

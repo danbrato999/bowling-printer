@@ -15,7 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class FileGameReader {
+public class FileGameReader implements IGameReader {
     private static final Pattern LINE_REGEX = Pattern.compile("^(\\w+)\\s+([0-9]{1,2}|F)");
     private Path path;
     private IPlayerScoreMapper scoreMapper;
@@ -25,6 +25,7 @@ public class FileGameReader {
         this.scoreMapper = scoreMapper;
     }
 
+    @Override
     public BowlingGame readGame() throws SourceNotFoundException {
         try {
             List<String> allLines = Files.readAllLines(path);
@@ -68,7 +69,7 @@ public class FileGameReader {
         return new BowlingGame(playerScores);
     }
 
-    private Deque<PinCount> singleQueue(PinCount pinCount) {
+    private static Deque<PinCount> singleQueue(PinCount pinCount) {
         Deque<PinCount> deque = new LinkedList<>();
         deque.addLast(pinCount);
         return deque;

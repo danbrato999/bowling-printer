@@ -1,7 +1,7 @@
 package com.jobsity.bowling.mappers;
 
 import com.jobsity.bowling.models.*;
-import com.jobsity.bowling.validators.IScoreValidator;
+import com.jobsity.bowling.validators.IGameValidator;
 
 import java.util.ArrayList;
 import java.util.Deque;
@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class TenPinPlayerScoreMapper implements IPlayerScoreMapper {
-    private IScoreValidator gameConfigurator;
+    private IGameValidator validator;
 
-    public TenPinPlayerScoreMapper(IScoreValidator gameConfigurator) {
-        this.gameConfigurator = gameConfigurator;
+    public TenPinPlayerScoreMapper(IGameValidator validator) {
+        this.validator = validator;
     }
 
     @Override
@@ -22,14 +22,14 @@ public class TenPinPlayerScoreMapper implements IPlayerScoreMapper {
         playerScore.setPlayerName(playerName);
         playerScore.setMatchFrames(playerFrames);
 
-        gameConfigurator.validatePlayerScore(playerScore);
+        validator.validatePlayerScore(playerScore);
         return playerScore;
     }
 
     private List<MatchFrame> getMatchFrames(List<MatchFrame> currentList, Deque<PinCount> pinCounts) throws NoSuchElementException {
         boolean isLastFrame = currentList.size() == 9;
         MatchFrame frame = buildFrame(pinCounts, isLastFrame);
-        gameConfigurator.validateMatchFrame(frame);
+        validator.validateMatchFrame(frame);
         currentList.add(frame);
 
         if (isLastFrame)
@@ -51,7 +51,7 @@ public class TenPinPlayerScoreMapper implements IPlayerScoreMapper {
         }
 
         // Check if it's strike
-        if (firstShot.toInt() == 10) {
+        if (validator.isStrike(firstShot)) {
             int extraScore = secondShot.toInt() + pinCounts.getFirst().toInt();
             // Return the popped shot, as it will be the first one of the next frame
             pinCounts.addFirst(secondShot);
@@ -59,7 +59,7 @@ public class TenPinPlayerScoreMapper implements IPlayerScoreMapper {
         }
 
         // Check if it's split
-        if (firstShot.toInt() + secondShot.toInt() == 10)
+        if (validator.areSplit(firstShot, secondShot))
             return new AccumulatedMatchFrame(firstShot, pinCounts.getFirst().toInt())
                     .setSecondShot(secondShot);
 

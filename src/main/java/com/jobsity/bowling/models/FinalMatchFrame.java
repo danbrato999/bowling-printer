@@ -23,6 +23,7 @@ public class FinalMatchFrame extends MatchFrame {
         return extraShots.size();
     }
 
+    // TODO Maybe we should remove this and calculate it when needed (?)
     @Override
     public int getScore() {
         return super.getScore() + extraShots.stream()
