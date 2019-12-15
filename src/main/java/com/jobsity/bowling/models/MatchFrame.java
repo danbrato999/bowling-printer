@@ -1,6 +1,6 @@
 package com.jobsity.bowling.models;
 
-public class MatchFrame {
+public abstract class MatchFrame {
     protected PinCount firstShot;
     protected PinCount secondShot;
 

@@ -3,21 +3,14 @@ package com.jobsity.bowling.services;
 import com.jobsity.bowling.models.*;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
-public class MatchBuilder {
-    public static List<PlayerScore> buildMatch(Map<String, Deque<PinCount>> playersWithScores) {
-        return playersWithScores.entrySet()
-                .stream()
-                .map(scoreEntry -> {
-                    PlayerScore playerScore = new PlayerScore();
-                    playerScore.setPlayerName(scoreEntry.getKey());
-                    playerScore.setMatchFrames(getMatchFrames(new ArrayList<>(), scoreEntry.getValue()));
-                    return playerScore;
-                }).collect(Collectors.toList());
+public class RecursiveMatchFrameMapper implements IMatchFrameMapper {
+    @Override
+    public List<MatchFrame> toMatchFrameList(Deque<PinCount> pinCounts) {
+        return getMatchFrames(new ArrayList<>(), pinCounts);
     }
 
-    private static List<MatchFrame> getMatchFrames(List<MatchFrame> currentList, Deque<PinCount> pinsCount) throws NoSuchElementException, NullPointerException {
+    private static List<MatchFrame> getMatchFrames(List<MatchFrame> currentList, Deque<PinCount> pinsCount) throws NoSuchElementException {
         PinCount firstShot = pinsCount.pop();
         PinCount secondShot = pinsCount.pop();
 
@@ -43,7 +36,7 @@ public class MatchBuilder {
                 frame = new AccumulatedMatchFrame(firstShot, pinsCount.getFirst().toInt())
                         .setSecondShot(secondShot);
             else
-                frame = new MatchFrame(firstShot, secondShot);
+                frame = new BasicMatchFrame(firstShot, secondShot);
         }
 
         currentList.add(frame);

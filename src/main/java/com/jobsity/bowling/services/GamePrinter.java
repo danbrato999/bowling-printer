@@ -1,22 +1,24 @@
 package com.jobsity.bowling.services;
 
 import com.jobsity.bowling.encoders.IFrameEncoder;
+import com.jobsity.bowling.models.BowlingGame;
 import com.jobsity.bowling.models.MatchFrame;
 import com.jobsity.bowling.models.PlayerScore;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MatchPrinter {
+public class GamePrinter {
     private IFrameEncoder frameEncoder;
 
-    public MatchPrinter(IFrameEncoder frameEncoder) {
+    public GamePrinter(IFrameEncoder frameEncoder) {
         this.frameEncoder = frameEncoder;
     }
 
-    public void printMatch(List<PlayerScore> playerScores) {
+    public void printGame(BowlingGame game) {
         printHeader();
-        playerScores.forEach(this::printPlayerScore);
+        game.getPlayerScores()
+                .forEach(this::printPlayerScore);
     }
 
     private void printPlayerScore(PlayerScore playerScore) {
