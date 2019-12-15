@@ -23,9 +23,9 @@ public class TenPinConsoleEncoder implements IFrameEncoder {
         if (validator.isStrike(frame))
             return "\tX\t";
         else if (validator.isSplit(frame))
-            return String.format("%s\t/\t", frame.getFirstShot());
+            return String.format("%s\t/\t", frame.getFirstShot().getValue());
         else
-            return String.format("%s\t%s\t", frame.getFirstShot(), frame.getSecondShot());
+            return String.format("%s\t%s\t", frame.getFirstShot().getValue(), frame.getSecondShot().getValue());
     }
 
     public String encodeFinal(FinalMatchFrame frame) {
@@ -36,21 +36,21 @@ public class TenPinConsoleEncoder implements IFrameEncoder {
             if (validator.isStrike(frame.getSecondShot()))
                 builder.append("X\t");
             else
-                builder.append(String.format("%s\t", frame.getSecondShot()));
+                builder.append(String.format("%s\t", frame.getSecondShot().getValue()));
 
             if (validator.isStrike(frame.getThirdShot()))
                 builder.append("X");
             else if (validator.areSplit(frame.getSecondShot(), frame.getThirdShot()))
                 builder.append("/");
             else
-                builder.append(frame.getThirdShot());
+                builder.append(frame.getThirdShot().getValue());
         } else {
-            builder.append(String.format("%s\t", frame.getFirstShot()));
+            builder.append(String.format("%s\t", frame.getFirstShot().getValue()));
 
             if (validator.isSplit(frame))
                 builder.append("/");
             else
-                builder.append(frame.getSecondShot());
+                builder.append(frame.getSecondShot().getValue());
         }
         return builder.toString();
     }

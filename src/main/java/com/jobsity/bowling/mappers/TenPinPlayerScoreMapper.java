@@ -52,7 +52,7 @@ public class TenPinPlayerScoreMapper implements IPlayerScoreMapper {
 
         // Check if it's strike
         if (validator.isStrike(firstShot)) {
-            int extraScore = secondShot.toInt() + pinCounts.getFirst().toInt();
+            int extraScore = secondShot.getScore() + pinCounts.getFirst().getScore();
             // Return the popped shot, as it will be the first one of the next frame
             pinCounts.addFirst(secondShot);
             return new AccumulatedMatchFrame(firstShot, extraScore);
@@ -60,7 +60,7 @@ public class TenPinPlayerScoreMapper implements IPlayerScoreMapper {
 
         // Check if it's split
         if (validator.areSplit(firstShot, secondShot))
-            return new AccumulatedMatchFrame(firstShot, pinCounts.getFirst().toInt())
+            return new AccumulatedMatchFrame(firstShot, pinCounts.getFirst().getScore())
                     .setSecondShot(secondShot);
 
         return new BasicMatchFrame(firstShot, secondShot);

@@ -32,12 +32,12 @@ public class GameConsolePrinter implements IGamePrinter {
         System.out.println("Pinfalls\t" + pinData);
 
         System.out.print("Score\t\t");
-        printScoreData(0, playerScore.getMatchFrames().stream().map(MatchFrame::getScore).collect(Collectors.toList()));
+        printScoreData(0, playerScore.getMatchFrames());
     }
 
-    private void printScoreData(int score, List<Integer> scoresLeft) {
+    private void printScoreData(int score, List<MatchFrame> scoresLeft) {
         if (!scoresLeft.isEmpty()) {
-            int newScore = score + scoresLeft.remove(0);
+            int newScore = score + scoresLeft.remove(0).getFrameScore();
             System.out.printf("%d\t\t", newScore);
             printScoreData(newScore, scoresLeft);
         } else

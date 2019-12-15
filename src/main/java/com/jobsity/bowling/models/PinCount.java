@@ -1,21 +1,19 @@
 package com.jobsity.bowling.models;
 
 public class PinCount {
-    public static final PinCount ZERO = PinCount.of("0");
     private String value;
+    private int score;
 
-    public static PinCount of(String value) {
-        PinCount count = new PinCount();
-        count.value = value;
-        return count;
+    public PinCount(String value, int score) {
+        this.value = value;
+        this.score = score;
     }
 
-    public int toInt() {
-        return "F".equals(value) ? 0 : Integer.parseInt(value);
-    }
-
-    @Override
-    public String toString() {
+    public String getValue() {
         return value;
+    }
+
+    public int getScore() {
+        return score;
     }
 }

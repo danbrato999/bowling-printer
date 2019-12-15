@@ -1,17 +1,11 @@
 package com.jobsity.bowling.models;
 
-public abstract class MatchFrame {
+public abstract class MatchFrame implements IScoredFrame {
     protected PinCount firstShot;
     protected PinCount secondShot;
 
-    public MatchFrame() {
-        this.firstShot = PinCount.ZERO;
-        this.secondShot = PinCount.ZERO;
-    }
-
-    public MatchFrame(PinCount firstShot, PinCount secondShot) {
+    public MatchFrame(PinCount firstShot) {
         this.firstShot = firstShot;
-        this.secondShot = secondShot;
     }
 
     public PinCount getFirstShot() {
@@ -27,8 +21,14 @@ public abstract class MatchFrame {
         return this;
     }
 
-    //TODO Maybe remove this from here
-    public int getScore() {
-        return firstShot.toInt() + secondShot.toInt();
+    @Override
+    public int shotsCount() {
+        return secondShot == null ? 1 : 2;
+    }
+
+    @Override
+    public int getShotsScore() {
+        int secondShotScore = secondShot != null ? secondShot.getScore() : 0;
+        return firstShot.getScore() + secondShotScore;
     }
 }

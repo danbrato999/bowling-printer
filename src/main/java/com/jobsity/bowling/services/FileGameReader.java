@@ -1,6 +1,7 @@
 package com.jobsity.bowling.services;
 
 import com.jobsity.bowling.exceptions.SourceNotFoundException;
+import com.jobsity.bowling.mappers.IPinCountMapper;
 import com.jobsity.bowling.models.BowlingGame;
 import com.jobsity.bowling.models.PinCount;
 import com.jobsity.bowling.models.PlayerScore;
@@ -17,11 +18,14 @@ import java.util.stream.Collectors;
 
 public class FileGameReader implements IGameReader {
     private static final Pattern LINE_REGEX = Pattern.compile("^(\\w+)\\s+([0-9]{1,2}|F)");
+
     private Path path;
+    private IPinCountMapper pinCountMapper;
     private IPlayerScoreMapper scoreMapper;
 
-    public FileGameReader(String path, IPlayerScoreMapper scoreMapper) {
+    public FileGameReader(String path, IPinCountMapper pinCountMapper, IPlayerScoreMapper scoreMapper) {
         this.path = Paths.get(path);
+        this.pinCountMapper = pinCountMapper;
         this.scoreMapper = scoreMapper;
     }
 
@@ -39,7 +43,7 @@ public class FileGameReader implements IGameReader {
                     throw new IllegalArgumentException();
 
                 String name = matcher.group(1);
-                PinCount pinCount = PinCount.of(matcher.group(2));
+                PinCount pinCount = pinCountMapper.fromString(matcher.group(2));
 
                 scores.compute(name, (key, currentPinCount) -> {
                     if (currentPinCount == null) {

@@ -1,36 +1,31 @@
 package com.jobsity.bowling.validators;
 
-import com.jobsity.bowling.models.FinalMatchFrame;
-import com.jobsity.bowling.models.MatchFrame;
-import com.jobsity.bowling.models.PinCount;
-import com.jobsity.bowling.models.PlayerScore;
+import com.jobsity.bowling.models.*;
 
 public abstract class BaseScoreValidator implements IGameValidator {
     private int minFrameScore;
     private int maxRegularFrameScore;
     private int maxLastFrameScore;
-    private int maxLastFrameExtraAttempts;
+    private int maxLastFrameAttempts;
     private int maxFramesPerPlayer;
 
-    public BaseScoreValidator(int minFrameScore, int maxRegularFrameScore, int maxLastFrameScore, int maxLastFrameExtraAttempts, int maxFramesPerPlayer) {
+    public BaseScoreValidator(int minFrameScore, int maxRegularFrameScore, int maxLastFrameScore, int maxLastFrameAttempts, int maxFramesPerPlayer) {
         this.minFrameScore = minFrameScore;
         this.maxRegularFrameScore = maxRegularFrameScore;
         this.maxLastFrameScore = maxLastFrameScore;
-        this.maxLastFrameExtraAttempts = maxLastFrameExtraAttempts;
+        this.maxLastFrameAttempts = maxLastFrameAttempts;
         this.maxFramesPerPlayer = maxFramesPerPlayer;
     }
 
     @Override
-    public void validateMatchFrame(MatchFrame matchFrame) {
-        int score = matchFrame.getScore();
+    public void validateMatchFrame(IScoredFrame frame) {
+        assert frame.getFrameScore() > minFrameScore;
 
-        assert score > minFrameScore;
-
-        if (matchFrame instanceof FinalMatchFrame) {
-            assert ((FinalMatchFrame) matchFrame).getExtraShotsCount() <= maxLastFrameExtraAttempts;
-            assert matchFrame.getScore() <= maxLastFrameScore;
+        if (frame instanceof FinalMatchFrame) {
+            assert frame.shotsCount() <= maxLastFrameAttempts;
+            assert frame.getFrameScore() <= maxLastFrameScore;
         } else
-            assert matchFrame.getFirstShot().toInt() + matchFrame.getSecondShot().toInt() <= maxRegularFrameScore;
+            assert frame.getShotsScore() <= maxRegularFrameScore;
     }
 
     @Override
@@ -39,22 +34,22 @@ public abstract class BaseScoreValidator implements IGameValidator {
     }
 
     @Override
-    public boolean isStrike(MatchFrame frame) {
-        return frame.getFirstShot().toInt() == maxRegularFrameScore;
+    public boolean isStrike(IScoredFrame frame) {
+        return frame.getShotsScore() == maxRegularFrameScore && frame.shotsCount() == 1;
     }
 
     @Override
-    public boolean isSplit(MatchFrame frame) {
-        return frame.getFirstShot().toInt() + frame.getSecondShot().toInt() == maxRegularFrameScore;
+    public boolean isSplit(IScoredFrame frame) {
+        return frame.getShotsScore() == maxRegularFrameScore && frame.shotsCount() == 2;
     }
 
     @Override
     public boolean isStrike(PinCount pinCount) {
-        return pinCount.toInt() == maxRegularFrameScore;
+        return pinCount.getScore() == maxRegularFrameScore;
     }
 
     @Override
     public boolean areSplit(PinCount count1, PinCount count2) {
-        return count1.toInt() + count2.toInt() == maxRegularFrameScore;
+        return count1.getScore() + count2.getScore() == maxRegularFrameScore;
     }
 }

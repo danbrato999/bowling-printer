@@ -7,7 +7,8 @@ public class FinalMatchFrame extends MatchFrame {
     private List<PinCount> extraShots;
 
     public FinalMatchFrame(PinCount firstShot, PinCount secondShot) {
-        super(firstShot, secondShot);
+        super(firstShot);
+        this.secondShot = secondShot;
         extraShots = new ArrayList<>();
     }
 
@@ -19,15 +20,15 @@ public class FinalMatchFrame extends MatchFrame {
         extraShots.add(extraShot);
     }
 
-    public int getExtraShotsCount() {
-        return extraShots.size();
+    @Override
+    public int shotsCount() {
+        return super.shotsCount() + extraShots.size();
     }
 
-    // TODO Maybe we should remove this and calculate it when needed (?)
     @Override
-    public int getScore() {
-        return super.getScore() + extraShots.stream()
-                .map(PinCount::toInt)
+    public int getFrameScore() {
+        return getShotsScore() + extraShots.stream()
+                .map(PinCount::getScore)
                 .reduce(Integer::sum)
                 .orElse(0);
     }
