@@ -1,35 +1,14 @@
 package com.jobsity.bowling.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class FinalMatchFrame extends MatchFrame {
-    private List<PinCount> extraShots;
 
     public FinalMatchFrame(PinCount firstShot, PinCount secondShot) {
         super(firstShot);
-        this.secondShot = secondShot;
-        extraShots = new ArrayList<>();
-    }
-
-    public PinCount getThirdShot() {
-        return extraShots.isEmpty() ? null : extraShots.get(0);
-    }
-
-    public void addExtraShot(PinCount extraShot) {
-        extraShots.add(extraShot);
-    }
-
-    @Override
-    public int shotsCount() {
-        return super.shotsCount() + extraShots.size();
+        shots.add(secondShot);
     }
 
     @Override
     public int getFrameScore() {
-        return getShotsScore() + extraShots.stream()
-                .map(PinCount::getScore)
-                .reduce(Integer::sum)
-                .orElse(0);
+        return getShotsScore();
     }
 }

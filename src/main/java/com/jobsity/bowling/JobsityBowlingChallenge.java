@@ -1,6 +1,8 @@
 package com.jobsity.bowling;
 
+import com.jobsity.bowling.encoders.AccumulatedScoreEncoder;
 import com.jobsity.bowling.encoders.IFrameEncoder;
+import com.jobsity.bowling.encoders.IScoreEncoder;
 import com.jobsity.bowling.encoders.TenPinConsoleEncoder;
 import com.jobsity.bowling.exceptions.SourceNotFoundException;
 import com.jobsity.bowling.mappers.IPinCountMapper;
@@ -40,8 +42,9 @@ public class JobsityBowlingChallenge {
         IPinCountMapper pinCountMapper = new TenPinCountMapper();
         IGameReader reader = new FileGameReader("src/main/resources/test-game.txt", pinCountMapper, scoreMapper);
 
-        IFrameEncoder encoder = new TenPinConsoleEncoder(validator);
-        IGamePrinter printer = new GameConsolePrinter(encoder);
+        IFrameEncoder frameEncoder = new TenPinConsoleEncoder(validator);
+        IScoreEncoder scoreEncoder = new AccumulatedScoreEncoder();
+        IGamePrinter printer = new GameConsolePrinter(frameEncoder, scoreEncoder);
 
         new JobsityBowlingChallenge(reader, printer)
                 .fetchAndPrint();

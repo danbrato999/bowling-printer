@@ -45,7 +45,7 @@ public class TenPinPlayerScoreMapper implements IPlayerScoreMapper {
         // If is the last frame, add extra attempts
         if (isFinal) {
             FinalMatchFrame frame = new FinalMatchFrame(firstShot, secondShot);
-            while (!pinCounts.isEmpty()) frame.addExtraShot(pinCounts.pop());
+            while (!pinCounts.isEmpty()) frame.addShot(pinCounts.pop());
 
             return frame;
         }
@@ -61,7 +61,7 @@ public class TenPinPlayerScoreMapper implements IPlayerScoreMapper {
         // Check if it's split
         if (validator.areSplit(firstShot, secondShot))
             return new AccumulatedMatchFrame(firstShot, pinCounts.getFirst().getScore())
-                    .setSecondShot(secondShot);
+                    .addShot(secondShot);
 
         return new BasicMatchFrame(firstShot, secondShot);
     }
