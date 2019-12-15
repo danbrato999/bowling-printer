@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6980ddd0-c58e-4b5c-8159-c969689294ca" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Interface" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1UwuJ6xOjM1fG9Ku4YPPrJx5Cvq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.jobsity.bowling.utils" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.JobsityBowlingChallenge">
+    <configuration name="GameBuilder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jobsity.other.GameBuilder" />
+      <module name="jobsity-bowling" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jobsity.bowling.models.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JSBowling" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jobsity.bowling.JSBowling" />
+      <module name="jobsity-bowling" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jobsity.bowling.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JobsityBowlingChallenge" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jobsity.bowling.JobsityBowlingChallenge" />
+      <module name="jobsity-bowling" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jobsity.bowling.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.JobsityBowlingChallenge" />
+        <item itemvalue="Application.GameBuilder" />
+        <item itemvalue="Application.JSBowling" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="$USER_HOME$/kiwi/epcommon_play" value="PREVIEW" />
+        <entry key="$USER_HOME$/kiwi/kiwi-giskard" value="PREVIEW" />
+        <entry key="$USER_HOME$/kiwi/kiwibot_server" value="PREVIEW" />
+        <entry key="$USER_HOME$/kiwi/kiwiu_backend" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6980ddd0-c58e-4b5c-8159-c969689294ca" name="Default Changelist" comment="" />
+      <created>1576279903145</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576279903145</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="653" y="182" key="#com.intellij.ide.util.MemberChooser" timestamp="1576367009593">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="653" y="187" key="#com.intellij.ide.util.MemberChooser/-1920.23.1920.1057/0.23.1680.947@0.23.1680.947" timestamp="1576284958492" />
+    <state x="653" y="182" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1576367009593" />
+    <state x="653" y="187" key="#com.intellij.ide.util.MemberChooser/0.23.1680.947@0.23.1680.947" timestamp="1576298063037" />
+    <state x="602" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1576282020507">
+      <screen x="0" y="23" width="1680" height="947" />
+    </state>
+    <state x="602" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1920.23.1920.1057/0.23.1680.947@0.23.1680.947" timestamp="1576282020507" />
+    <state width="888" height="253" key="GridCell.Tab.0.bottom" timestamp="1576367980884">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="888" height="253" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1576367980884" />
+    <state width="888" height="253" key="GridCell.Tab.0.center" timestamp="1576367980883">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="888" height="253" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1576367980883" />
+    <state width="888" height="253" key="GridCell.Tab.0.left" timestamp="1576367980882">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="888" height="253" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1576367980882" />
+    <state width="888" height="253" key="GridCell.Tab.0.right" timestamp="1576367980884">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="888" height="253" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1576367980884" />
+    <state x="884" y="149" key="refactoring.ChangeSignatureDialog" timestamp="1576339949062">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="884" y="149" key="refactoring.ChangeSignatureDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1576339949062" />
+  </component>
+</project>
