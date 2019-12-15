@@ -1,6 +1,7 @@
 package com.jobsity.bowling.services;
 
 import com.jobsity.bowling.SourceNotFoundException;
+import com.jobsity.bowling.models.PinCount;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,7 +20,7 @@ public class FileGameReader {
         this.path = Paths.get(path);
     }
 
-    public Map<String, Deque<Integer>> readGame() throws SourceNotFoundException {
+    public Map<String, Deque<PinCount>> readGame() throws SourceNotFoundException {
         try {
             List<String> allLines = Files.readAllLines(path);
 
@@ -35,8 +36,8 @@ public class FileGameReader {
                             Collectors.toMap(
                                     NameAndScore::getName,
                                     nameAndScore -> {
-                                        Deque<Integer> deque = new LinkedList<>();
-                                        deque.addLast(nameAndScore.score);
+                                        Deque<PinCount> deque = new LinkedList<>();
+                                        deque.addLast(PinCount.of(nameAndScore.score));
                                         return deque;
                                     },
                                     (a, b) -> {
@@ -52,22 +53,18 @@ public class FileGameReader {
 
     private static class NameAndScore {
         private String name;
-        private int score;
+        private String score;
 
         private NameAndScore(String name, String score) {
             this.name = name;
-
-            if ("F".equals(score))
-                this.score = 0;
-            else
-                this.score = Integer.parseInt(score);
+            this.score = score;
         }
 
         public String getName() {
             return name;
         }
 
-        public int getScore() {
+        public String getScore() {
             return score;
         }
     }

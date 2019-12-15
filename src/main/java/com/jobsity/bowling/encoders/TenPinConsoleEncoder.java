@@ -1,6 +1,5 @@
 package com.jobsity.bowling.encoders;
 
-import com.jobsity.bowling.encoders.IFrameEncoder;
 import com.jobsity.bowling.models.FinalMatchFrame;
 import com.jobsity.bowling.models.MatchFrame;
 
@@ -15,34 +14,34 @@ public class TenPinConsoleEncoder implements IFrameEncoder {
     }
 
     public String encodeFrame(MatchFrame frame) {
-        if (frame.getFirstShot() == 10)
+        if (frame.getFirstShot().toInt() == 10)
             return "\tX\t";
-        else if (frame.getFirstShot() + frame.getSecondShot() == 10)
-            return String.format("%d\t/\t", frame.getFirstShot());
+        else if (frame.getFirstShot().toInt() + frame.getSecondShot().toInt() == 10)
+            return String.format("%s\t/\t", frame.getFirstShot());
         else
-            return String.format("%d\t%d\t", frame.getFirstShot(), frame.getSecondShot());
+            return String.format("%s\t%s\t", frame.getFirstShot(), frame.getSecondShot());
     }
 
     public String encodeFinal(FinalMatchFrame frame) {
         StringBuilder builder = new StringBuilder();
-        if (frame.getFirstShot() == 10) {
+        if (frame.getFirstShot().toInt() == 10) {
             builder.append("X\t");
 
-            if (frame.getSecondShot() == 10)
+            if (frame.getSecondShot().toInt() == 10)
                 builder.append("X\t");
             else
-                builder.append(String.format("%d\t", frame.getSecondShot()));
+                builder.append(String.format("%s\t", frame.getSecondShot()));
 
-            if (frame.getThirdShot() == 10)
+            if (frame.getThirdShot().toInt() == 10)
                 builder.append("X");
-            else if (frame.getSecondShot() + frame.getThirdShot() == 10)
+            else if (frame.getSecondShot().toInt() + frame.getThirdShot().toInt() == 10)
                 builder.append("/");
             else
                 builder.append(frame.getThirdShot());
         } else {
-            builder.append(String.format("%d\t", frame.getFirstShot()));
+            builder.append(String.format("%s\t", frame.getFirstShot()));
 
-            if (frame.getFirstShot() + frame.getSecondShot() == 10)
+            if (frame.getFirstShot().toInt() + frame.getSecondShot().toInt() == 10)
                 builder.append("/");
             else
                 builder.append(frame.getSecondShot());

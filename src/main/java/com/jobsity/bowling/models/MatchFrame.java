@@ -1,36 +1,33 @@
 package com.jobsity.bowling.models;
 
 public class MatchFrame {
-    protected int firstShot;
-    protected int secondShot;
-    private int score;
+    protected PinCount firstShot;
+    protected PinCount secondShot;
 
-    public int getFirstShot() {
-        return firstShot;
+    public MatchFrame() {
+        this.firstShot = PinCount.ZERO;
+        this.secondShot = PinCount.ZERO;
     }
 
-    public void setFirstShot(int firstShot) {
+    public MatchFrame(PinCount firstShot, PinCount secondShot) {
         this.firstShot = firstShot;
-    }
-
-    public int getSecondShot() {
-        return secondShot;
-    }
-
-    public void setSecondShot(int secondShot) {
         this.secondShot = secondShot;
     }
 
-    public int getScore() {
-        return score;
+    public PinCount getFirstShot() {
+        return firstShot;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public PinCount getSecondShot() {
+        return secondShot;
     }
 
-    public MatchFrame withComputedScore() {
-        this.score = firstShot + secondShot;
+    public MatchFrame setSecondShot(PinCount secondShot) {
+        this.secondShot = secondShot;
         return this;
+    }
+
+    public int getScore() {
+        return firstShot.toInt() + secondShot.toInt();
     }
 }
