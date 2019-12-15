@@ -2,16 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6980ddd0-c58e-4b5c-8159-c969689294ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/models/BasicMatchFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/models/BowlingGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/services/IMatchFrameMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/services/RecursiveMatchFrameMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/mappers/TenPinPlayerScoreMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/validators/BaseScoreValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/validators/IScoreValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/validators/TenPinScoreValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/JobsityBowlingChallenge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/JobsityBowlingChallenge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/models/MatchFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/models/MatchFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/SingleClassImplementation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/SourceNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/exceptions/SourceNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/models/BowlingGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/models/BowlingGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/models/FinalMatchFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/models/FinalMatchFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/services/FileGameReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/services/FileGameReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/services/MatchBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/services/MatchPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/services/GamePrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/services/IMatchFrameMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/mappers/IPlayerScoreMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobsity/bowling/services/RecursiveMatchFrameMapper.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +40,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
@@ -54,43 +65,23 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.jobsity.bowling.validators" />
       <recent name="com.jobsity.bowling.services" />
       <recent name="com.jobsity.bowling.utils" />
     </key>
   </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn exec:java" />
+    </option>
+  </component>
   <component name="RunManager" selected="Application.JobsityBowlingChallenge">
-    <configuration name="GameBuilder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.jobsity.other.GameBuilder" />
-      <module name="jobsity-bowling" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.jobsity.bowling.models.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JSBowling" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.jobsity.bowling.JSBowling" />
-      <module name="jobsity-bowling" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.jobsity.bowling.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="JobsityBowlingChallenge" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.jobsity.bowling.JobsityBowlingChallenge" />
       <module name="jobsity-bowling" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.jobsity.bowling.*" />
+          <option name="PATTERN" value="com.jobsity.bowling.exceptions.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -98,11 +89,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Run" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="exec:java" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.JobsityBowlingChallenge" />
+      <item itemvalue="Maven.Run" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.JobsityBowlingChallenge" />
-        <item itemvalue="Application.GameBuilder" />
-        <item itemvalue="Application.JSBowling" />
       </list>
     </recent_temporary>
   </component>
@@ -142,41 +160,53 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="653" y="187" key="#com.intellij.ide.util.MemberChooser" timestamp="1576377432158">
+    <state x="304" y="158" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576379316539">
+      <screen x="0" y="23" width="1680" height="947" />
+    </state>
+    <state x="304" y="158" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.947@0.23.1680.947" timestamp="1576379316539" />
+    <state x="653" y="187" key="#com.intellij.ide.util.MemberChooser" timestamp="1576382405521">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state x="653" y="187" key="#com.intellij.ide.util.MemberChooser/-1920.23.1920.1057/0.23.1680.947@0.23.1680.947" timestamp="1576284958492" />
     <state x="653" y="182" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1576367009593" />
-    <state x="653" y="187" key="#com.intellij.ide.util.MemberChooser/0.23.1680.947@0.23.1680.947" timestamp="1576377432158" />
-    <state x="602" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1576377851382">
+    <state x="653" y="187" key="#com.intellij.ide.util.MemberChooser/0.23.1680.947@0.23.1680.947" timestamp="1576382405521" />
+    <state x="373" y="429" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1576379545254">
+      <screen x="0" y="23" width="1680" height="947" />
+    </state>
+    <state x="373" y="429" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.23.1680.947@0.23.1680.947" timestamp="1576379545254" />
+    <state x="602" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1576380770729">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state x="602" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1920.23.1920.1057/0.23.1680.947@0.23.1680.947" timestamp="1576282020507" />
-    <state x="602" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1680.947@0.23.1680.947" timestamp="1576377851382" />
-    <state width="1638" height="216" key="GridCell.Tab.0.bottom" timestamp="1576377716858">
+    <state x="602" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1680.947@0.23.1680.947" timestamp="1576380770729" />
+    <state width="1638" height="216" key="GridCell.Tab.0.bottom" timestamp="1576382803513">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state width="888" height="253" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1576367980884" />
-    <state width="1638" height="216" key="GridCell.Tab.0.bottom/0.23.1680.947@0.23.1680.947" timestamp="1576377716858" />
-    <state width="1638" height="216" key="GridCell.Tab.0.center" timestamp="1576377716857">
+    <state width="1638" height="216" key="GridCell.Tab.0.bottom/0.23.1680.947@0.23.1680.947" timestamp="1576382803513" />
+    <state width="1638" height="216" key="GridCell.Tab.0.center" timestamp="1576382803512">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state width="888" height="253" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1576367980883" />
-    <state width="1638" height="216" key="GridCell.Tab.0.center/0.23.1680.947@0.23.1680.947" timestamp="1576377716857" />
-    <state width="1638" height="216" key="GridCell.Tab.0.left" timestamp="1576377716856">
+    <state width="1638" height="216" key="GridCell.Tab.0.center/0.23.1680.947@0.23.1680.947" timestamp="1576382803512" />
+    <state width="1638" height="216" key="GridCell.Tab.0.left" timestamp="1576382803511">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state width="888" height="253" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1576367980882" />
-    <state width="1638" height="216" key="GridCell.Tab.0.left/0.23.1680.947@0.23.1680.947" timestamp="1576377716856" />
-    <state width="1638" height="216" key="GridCell.Tab.0.right" timestamp="1576377716857">
+    <state width="1638" height="216" key="GridCell.Tab.0.left/0.23.1680.947@0.23.1680.947" timestamp="1576382803511" />
+    <state width="1638" height="216" key="GridCell.Tab.0.right" timestamp="1576382803512">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state width="888" height="253" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1576367980884" />
-    <state width="1638" height="216" key="GridCell.Tab.0.right/0.23.1680.947@0.23.1680.947" timestamp="1576377716857" />
-    <state x="884" y="157" key="refactoring.ChangeSignatureDialog" timestamp="1576376839470">
+    <state width="1638" height="216" key="GridCell.Tab.0.right/0.23.1680.947@0.23.1680.947" timestamp="1576382803512" />
+    <state x="884" y="157" key="refactoring.ChangeSignatureDialog" timestamp="1576381158013">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state x="884" y="149" key="refactoring.ChangeSignatureDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1576339949062" />
-    <state x="884" y="157" key="refactoring.ChangeSignatureDialog/0.23.1680.947@0.23.1680.947" timestamp="1576376839470" />
+    <state x="884" y="157" key="refactoring.ChangeSignatureDialog/0.23.1680.947@0.23.1680.947" timestamp="1576381158013" />
+    <state x="505" y="228" width="670" height="675" key="run.anything.popup" timestamp="1576379118998">
+      <screen x="0" y="23" width="1680" height="947" />
+    </state>
+    <state x="505" y="228" width="670" height="675" key="run.anything.popup/0.23.1680.947@0.23.1680.947" timestamp="1576379118998" />
   </component>
 </project>

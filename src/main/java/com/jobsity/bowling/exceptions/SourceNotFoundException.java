@@ -1,4 +1,4 @@
-package com.jobsity.bowling;
+package com.jobsity.bowling.exceptions;
 
 public class SourceNotFoundException extends Exception {
     public SourceNotFoundException(Throwable t) {

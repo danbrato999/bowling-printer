@@ -1,6 +1,6 @@
 package com.jobsity.bowling.models;
 
-import java.util.*;
+import java.util.List;
 
 public class BowlingGame {
     private List<PlayerScore> playerScores;

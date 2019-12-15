@@ -1,9 +1,10 @@
 package com.jobsity.bowling.services;
 
-import com.jobsity.bowling.SourceNotFoundException;
+import com.jobsity.bowling.exceptions.SourceNotFoundException;
 import com.jobsity.bowling.models.BowlingGame;
 import com.jobsity.bowling.models.PinCount;
 import com.jobsity.bowling.models.PlayerScore;
+import com.jobsity.bowling.mappers.IPlayerScoreMapper;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,11 +18,11 @@ import java.util.stream.Collectors;
 public class FileGameReader {
     private static final Pattern LINE_REGEX = Pattern.compile("^(\\w+)\\s+([0-9]{1,2}|F)");
     private Path path;
-    private IMatchFrameMapper matchFrameMapper;
+    private IPlayerScoreMapper scoreMapper;
 
-    public FileGameReader(String path, IMatchFrameMapper matchFrameMapper) {
+    public FileGameReader(String path, IPlayerScoreMapper scoreMapper) {
         this.path = Paths.get(path);
-        this.matchFrameMapper = matchFrameMapper;
+        this.scoreMapper = scoreMapper;
     }
 
     public BowlingGame readGame() throws SourceNotFoundException {
@@ -60,10 +61,8 @@ public class FileGameReader {
         List<PlayerScore> playerScores = sortedPlayers
                 .stream()
                 .map(name -> {
-                    PlayerScore playerScore = new PlayerScore();
-                    playerScore.setPlayerName(name);
-                    playerScore.setMatchFrames(matchFrameMapper.toMatchFrameList(playersAndScores.get(name)));
-                    return playerScore;
+                    Deque<PinCount> scores = playersAndScores.get(name);
+                    return scoreMapper.toPlayerScore(name, scores);
                 }).collect(Collectors.toList());
 
         return new BowlingGame(playerScores);

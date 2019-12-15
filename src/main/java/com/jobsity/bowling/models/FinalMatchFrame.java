@@ -19,6 +19,10 @@ public class FinalMatchFrame extends MatchFrame {
         extraShots.add(extraShot);
     }
 
+    public int getExtraShotsCount() {
+        return extraShots.size();
+    }
+
     @Override
     public int getScore() {
         return super.getScore() + extraShots.stream()
