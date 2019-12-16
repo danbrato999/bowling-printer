@@ -28,7 +28,9 @@ public class GameConsolePrinter implements IGamePrinter {
 
     private void printPlayerScore(PlayerScore playerScore) {
         System.out.println(playerScore.getPlayerName());
-        System.out.printf("Pinfalls%2$s%1$s\n", frameEncoder.encode(playerScore.getMatchFrames(), DEFAULT_SEPARATOR), DEFAULT_SEPARATOR);
-        System.out.printf("Score%2$s%2$s%1$s\n", scoreEncoder.encode(playerScore.getMatchFrames(), DEFAULT_SEPARATOR), DEFAULT_SEPARATOR);
+        String encodedPins = frameEncoder.encode(playerScore, DEFAULT_SEPARATOR);
+        System.out.printf("Pinfalls%2$s%1$s\n", encodedPins, DEFAULT_SEPARATOR);
+        String encodedScore = scoreEncoder.encode(playerScore, DEFAULT_SEPARATOR + DEFAULT_SEPARATOR);
+        System.out.printf("Score%2$s%2$s%1$s\n", encodedScore, DEFAULT_SEPARATOR);
     }
 }

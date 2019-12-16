@@ -1,12 +1,10 @@
 package com.jobsity.bowling.mappers;
 
+import com.jobsity.bowling.exceptions.InvalidGameException;
 import com.jobsity.bowling.models.*;
 import com.jobsity.bowling.validators.IGameValidator;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class TenPinPlayerScoreMapper implements IPlayerScoreMapper {
     private IGameValidator validator;
@@ -17,16 +15,17 @@ public class TenPinPlayerScoreMapper implements IPlayerScoreMapper {
 
     @Override
     public PlayerScore toPlayerScore(String playerName, Deque<PinCount> pinCounts) {
-        List<MatchFrame> playerFrames = getMatchFrames(new ArrayList<>(), pinCounts);
-        PlayerScore playerScore = new PlayerScore();
-        playerScore.setPlayerName(playerName);
-        playerScore.setMatchFrames(playerFrames);
-
-        validator.validatePlayerScore(playerScore);
-        return playerScore;
+        try {
+            List<MatchFrame> playerFrames = getMatchFrames(new ArrayList<>(), new LinkedList<>(pinCounts));
+            PlayerScore playerScore = new PlayerScore(playerName, playerFrames);
+            validator.validatePlayerScore(playerScore);
+            return playerScore;
+        } catch (NoSuchElementException e) {
+            throw new InvalidGameException("Provided an invalid number of shots per player");
+        }
     }
 
-    private List<MatchFrame> getMatchFrames(List<MatchFrame> currentList, Deque<PinCount> pinCounts) throws NoSuchElementException {
+    private List<MatchFrame> getMatchFrames(List<MatchFrame> currentList, Deque<PinCount> pinCounts) {
         boolean isLastFrame = currentList.size() == 9;
         MatchFrame frame = buildFrame(pinCounts, isLastFrame);
         validator.validateMatchFrame(frame);

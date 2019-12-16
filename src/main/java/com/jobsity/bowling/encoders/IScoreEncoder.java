@@ -1,9 +1,7 @@
 package com.jobsity.bowling.encoders;
 
-import com.jobsity.bowling.models.IScoredFrame;
-
-import java.util.List;
+import com.jobsity.bowling.models.PlayerScore;
 
 public interface IScoreEncoder {
-    <T extends IScoredFrame> String encode(List<T> scoredFrames, String separator);
+    String encode(PlayerScore score, String separator);
 }

@@ -1,22 +1,22 @@
 package com.jobsity.bowling.encoders;
 
 import com.jobsity.bowling.models.IScoredFrame;
-
-import java.util.List;
+import com.jobsity.bowling.models.PlayerScore;
 
 public class AccumulatedScoreEncoder implements IScoreEncoder {
     @Override
-    public <T extends IScoredFrame> String encode(List<T> scoredFrames, String separator) {
+    public String encode(PlayerScore score, String separator) {
         StringBuilder builder = new StringBuilder();
         int currentScore = 0;
-        for (IScoredFrame frame: scoredFrames) {
+        for (IScoredFrame frame: score.getMatchFrames()) {
             currentScore += frame.getFrameScore();
             builder
                     .append(currentScore)
-                    .append(separator)
                     .append(separator);
         }
 
+
+        if (builder.length() > 0) builder.delete(builder.lastIndexOf(separator), builder.length());
         return builder.toString();
     }
 }
