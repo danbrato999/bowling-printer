@@ -15,18 +15,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AccumulatedScoreEncoderTest {
 
-    private final AccumulatedScoreEncoder encoder = new AccumulatedScoreEncoder();
+    private final AccumulatedScoreEncoder encoder = new AccumulatedScoreEncoder(DEFAULT_SEPARATOR);
 
     @Test
     void encodeEmptyList() {
         PlayerScore emptyScore = new PlayerScore("", Collections.emptyList());
-        String encodedScore = encoder.encode(emptyScore, DEFAULT_SEPARATOR);
+        String encodedScore = encoder.encode(emptyScore);
         assertEquals("", encodedScore, "Empty score list not encoded as empty string");
     }
 
     @Test
     void encodeOk() {
-        String encodedScore = encoder.encode(INCOMPLETE_SCORE, DEFAULT_SEPARATOR);
+        String encodedScore = encoder.encode(INCOMPLETE_SCORE);
         assertEquals("10|15", encodedScore);
     }
 

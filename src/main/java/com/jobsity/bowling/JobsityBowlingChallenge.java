@@ -18,6 +18,8 @@ import com.jobsity.bowling.validators.IGameValidator;
 import com.jobsity.bowling.validators.TenPinScoreValidator;
 
 public class JobsityBowlingChallenge {
+    private static final String DEFAULT_SEPARATOR = "\t";
+
     private IGameReader gameReader;
     private IGamePrinter gamePrinter;
 
@@ -27,24 +29,22 @@ public class JobsityBowlingChallenge {
     }
 
     public void fetchAndPrint() {
-        try {
-            BowlingGame game = gameReader.readGame();
-            gamePrinter.printGame(game);
-        } catch (SourceNotFoundException e) {
-            e.printStackTrace();
-        }
+        BowlingGame game = gameReader.readGame();
+        gamePrinter.printGame(game);
     }
 
-    //TODO Improve exception handling
     public static void main(String[] args) {
+        if (args.length == 0)
+            throw new SourceNotFoundException("Game file not provided");
+
         IGameValidator validator = new TenPinScoreValidator();
         IPlayerScoreMapper scoreMapper = new TenPinPlayerScoreMapper(validator);
         IPinCountMapper pinCountMapper = new TenPinCountMapper();
-        IGameReader reader = new FileGameReader("src/main/resources/test-game.txt", pinCountMapper, scoreMapper);
+        IGameReader reader = new FileGameReader(args[0], pinCountMapper, scoreMapper);
 
-        IFrameEncoder frameEncoder = new TenPinConsoleEncoder(validator);
-        IScoreEncoder scoreEncoder = new AccumulatedScoreEncoder();
-        IGamePrinter printer = new GameConsolePrinter(frameEncoder, scoreEncoder);
+        IFrameEncoder frameEncoder = new TenPinConsoleEncoder(validator, DEFAULT_SEPARATOR);
+        IScoreEncoder scoreEncoder = new AccumulatedScoreEncoder(DEFAULT_SEPARATOR + DEFAULT_SEPARATOR);
+        IGamePrinter printer = new GameConsolePrinter(frameEncoder, scoreEncoder, DEFAULT_SEPARATOR);
 
         new JobsityBowlingChallenge(reader, printer)
                 .fetchAndPrint();

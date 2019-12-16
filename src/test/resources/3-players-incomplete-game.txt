@@ -1,0 +1,6 @@
+John 10
+Carl 5
+Peter 8
+John 2
+Carl 3
+Peter 0

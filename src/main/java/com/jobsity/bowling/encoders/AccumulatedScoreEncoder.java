@@ -4,8 +4,14 @@ import com.jobsity.bowling.models.IScoredFrame;
 import com.jobsity.bowling.models.PlayerScore;
 
 public class AccumulatedScoreEncoder implements IScoreEncoder {
+    private String separator;
+
+    public AccumulatedScoreEncoder(String separator) {
+        this.separator = separator;
+    }
+
     @Override
-    public String encode(PlayerScore score, String separator) {
+    public String encode(PlayerScore score) {
         StringBuilder builder = new StringBuilder();
         int currentScore = 0;
         for (IScoredFrame frame: score.getMatchFrames()) {

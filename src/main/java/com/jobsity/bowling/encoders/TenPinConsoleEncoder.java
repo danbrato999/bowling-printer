@@ -12,29 +12,31 @@ import java.util.stream.Collectors;
 
 public class TenPinConsoleEncoder implements IFrameEncoder {
     private IFrameValidator validator;
+    private String separator;
 
-    public TenPinConsoleEncoder(IFrameValidator validator) {
+    public TenPinConsoleEncoder(IFrameValidator validator, String separator) {
         this.validator = validator;
+        this.separator = separator;
     }
 
     @Override
-    public String encode(PlayerScore score, String separator) {
+    public String encode(PlayerScore score) {
         return score.getMatchFrames()
                 .stream()
                 .map(frame -> {
                             if (frame instanceof FinalMatchFrame)
-                                return encodeFinalFrame(new StringBuilder(), new ArrayList<>(frame.getShots()), separator);
+                                return encodeFinalFrame(new StringBuilder(), new ArrayList<>(frame.getShots()));
                             else
-                                return encodeFrame(frame, separator);
+                                return encodeFrame(frame);
                         }
                 ).collect(Collectors.joining(separator));
     }
 
-    private String encodeFrame(MatchFrame frame, String separator) {
+    private String encodeFrame(MatchFrame frame) {
         return validator.isStrike(frame) ? String.format("%sX", separator) : splitValidator(frame.getShots(), separator);
     }
 
-    private String encodeFinalFrame(StringBuilder builder, List<PinCount> pinCounts, String separator) {
+    private String encodeFinalFrame(StringBuilder builder, List<PinCount> pinCounts) {
         if (pinCounts.isEmpty())
             return builder.toString();
         else  {
@@ -48,7 +50,7 @@ public class TenPinConsoleEncoder implements IFrameEncoder {
             } else
                 builder.append(pinCounts.get(0).getValue());
             pinCounts.remove(0);
-            return encodeFinalFrame(builder, pinCounts, separator);
+            return encodeFinalFrame(builder, pinCounts);
         }
     }
 

@@ -1,5 +1,6 @@
 package com.jobsity.bowling.services;
 
+import com.jobsity.bowling.exceptions.InvalidFormatException;
 import com.jobsity.bowling.exceptions.SourceNotFoundException;
 import com.jobsity.bowling.mappers.IPinCountMapper;
 import com.jobsity.bowling.models.BowlingGame;
@@ -40,7 +41,7 @@ public class FileGameReader implements IGameReader {
             for (String line: allLines) {
                 Matcher matcher = LINE_REGEX.matcher(line);
                 if (!matcher.matches())
-                    throw new IllegalArgumentException();
+                    throw new InvalidFormatException("Game file has an invalid format. Line " + line);
 
                 String name = matcher.group(1);
                 PinCount pinCount = pinCountMapper.fromString(matcher.group(2));

@@ -21,7 +21,7 @@ public abstract class BaseScoreValidator implements IGameValidator {
 
     @Override
     public void validateMatchFrame(IScoredFrame frame) {
-        assert frame.getFrameScore() > minFrameScore;
+        assert frame.getFrameScore() >= minFrameScore;
 
         if (frame instanceof FinalMatchFrame)
             validateFinalFrame((FinalMatchFrame) frame);

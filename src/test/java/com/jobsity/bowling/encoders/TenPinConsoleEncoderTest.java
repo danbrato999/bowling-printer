@@ -19,8 +19,8 @@ class TenPinConsoleEncoderTest {
         when(validator.isStrike(any(IScoredFrame.class))).thenReturn(false);
         when(validator.areSplit(any(), any())).thenReturn(false);
 
-        TenPinConsoleEncoder encoder = new TenPinConsoleEncoder(validator);
-        String encoded = encoder.encode(INCOMPLETE_SCORE, DEFAULT_SEPARATOR);
+        TenPinConsoleEncoder encoder = new TenPinConsoleEncoder(validator, DEFAULT_SEPARATOR);
+        String encoded = encoder.encode(INCOMPLETE_SCORE);
 
         assertEquals("8|2|0|5", encoded);
     }
@@ -30,8 +30,8 @@ class TenPinConsoleEncoderTest {
         IFrameValidator validator = mock(IFrameValidator.class);
         when(validator.isStrike(any(IScoredFrame.class))).thenReturn(true);
 
-        TenPinConsoleEncoder encoder = new TenPinConsoleEncoder(validator);
-        String encoded = encoder.encode(INCOMPLETE_SCORE, DEFAULT_SEPARATOR);
+        TenPinConsoleEncoder encoder = new TenPinConsoleEncoder(validator, DEFAULT_SEPARATOR);
+        String encoded = encoder.encode(INCOMPLETE_SCORE);
 
         assertEquals("|X||X", encoded);
     }
@@ -42,8 +42,8 @@ class TenPinConsoleEncoderTest {
         when(validator.isStrike(any(IScoredFrame.class))).thenReturn(false);
         when(validator.areSplit(any(), any())).thenReturn(true);
 
-        TenPinConsoleEncoder encoder = new TenPinConsoleEncoder(validator);
-        String encoded = encoder.encode(INCOMPLETE_SCORE, DEFAULT_SEPARATOR);
+        TenPinConsoleEncoder encoder = new TenPinConsoleEncoder(validator, DEFAULT_SEPARATOR);
+        String encoded = encoder.encode(INCOMPLETE_SCORE);
         assertEquals("8|/|0|/", encoded);
     }
 
@@ -62,8 +62,8 @@ class TenPinConsoleEncoderTest {
         when(validator.areSplit(count2, count3)).thenReturn(false);
 
 
-        TenPinConsoleEncoder encoder = new TenPinConsoleEncoder(validator);
-        String encoded = encoder.encode(score, DEFAULT_SEPARATOR);
+        TenPinConsoleEncoder encoder = new TenPinConsoleEncoder(validator, DEFAULT_SEPARATOR);
+        String encoded = encoder.encode(score);
 
         assertEquals("X|F|6", encoded);
 
@@ -71,8 +71,8 @@ class TenPinConsoleEncoderTest {
         when(validator1.isStrike(any(PinCount.class))).thenReturn(false);
         when(validator1.areSplit(any(), any())).thenReturn(true);
 
-        TenPinConsoleEncoder encoder1 = new TenPinConsoleEncoder(validator1);
-        String encoded1 = encoder1.encode(score, DEFAULT_SEPARATOR);
+        TenPinConsoleEncoder encoder1 = new TenPinConsoleEncoder(validator1, DEFAULT_SEPARATOR);
+        String encoded1 = encoder1.encode(score);
 
         assertEquals("10|/6", encoded1);
     }
