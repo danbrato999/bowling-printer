@@ -3,10 +3,10 @@ package com.jobsity.bowling.services;
 import com.jobsity.bowling.exceptions.InvalidFormatException;
 import com.jobsity.bowling.exceptions.SourceNotFoundException;
 import com.jobsity.bowling.mappers.IPinCountMapper;
+import com.jobsity.bowling.mappers.IPlayerScoreMapper;
 import com.jobsity.bowling.models.BowlingGame;
 import com.jobsity.bowling.models.PinCount;
 import com.jobsity.bowling.models.PlayerScore;
-import com.jobsity.bowling.mappers.IPlayerScoreMapper;
 
 import java.io.IOException;
 import java.nio.file.Files;

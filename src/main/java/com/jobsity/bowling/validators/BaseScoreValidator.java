@@ -1,6 +1,9 @@
 package com.jobsity.bowling.validators;
 
-import com.jobsity.bowling.models.*;
+import com.jobsity.bowling.models.FinalMatchFrame;
+import com.jobsity.bowling.models.IScoredFrame;
+import com.jobsity.bowling.models.PinCount;
+import com.jobsity.bowling.models.PlayerScore;
 
 import java.util.Objects;
 
